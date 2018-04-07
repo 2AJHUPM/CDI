@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/title_bottom_margin"
-            android:text="@string/emailpassword_title_text"
+            android:text="Email and Password"
             android:theme="@style/ThemeOverlay.MyTitleText" />
 
         <TextView
@@ -63,7 +63,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/hint_email"
+                android:hint="Email"
                 android:inputType="textEmailAddress" />
 
             <EditText
@@ -71,7 +71,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="@string/hint_password"
+                android:hint="Password"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -89,7 +89,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/sign_in"
+                android:text="Sign In"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button
@@ -97,7 +97,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/create_account"
+                android:text="Register"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
         </LinearLayout>
 
