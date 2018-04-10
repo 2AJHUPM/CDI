@@ -1,9 +1,9 @@
 package com.example.android.cdi;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -46,7 +46,8 @@ public class MainActivity extends BaseActivity
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
-        findViewById(R.id.verify_email_button).setOnClickListener(this);
+        //findViewById(R.id.verify_email_button).setOnClickListener(this);
+
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
@@ -65,9 +66,7 @@ public class MainActivity extends BaseActivity
 
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
-        if (!validateForm()) {
-            return;
-        }
+
 
         showProgressDialog();
 
@@ -139,9 +138,9 @@ public class MainActivity extends BaseActivity
         updateUI(null);
     }
 
-    private void sendEmailVerification() {
+    /*private void sendEmailVerification() {
         // Disable button
-        findViewById(R.id.verify_email_button).setEnabled(false);
+        //findViewById(R.id.verify_email_button).setEnabled(false);
 
         // Send verification email
         // [START send_email_verification]
@@ -152,7 +151,7 @@ public class MainActivity extends BaseActivity
                     public void onComplete(@NonNull Task<Void> task) {
                         // [START_EXCLUDE]
                         // Re-enable button
-                        findViewById(R.id.verify_email_button).setEnabled(true);
+                        //findViewById(R.id.verify_email_button).setEnabled(true);
 
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),
@@ -168,7 +167,7 @@ public class MainActivity extends BaseActivity
                     }
                 });
         // [END send_email_verification]
-    }
+    }*/
 
     private boolean validateForm() {
         boolean valid = true;
@@ -203,7 +202,7 @@ public class MainActivity extends BaseActivity
             findViewById(R.id.email_password_fields).setVisibility(View.GONE);
             findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
 
-            findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
+            //findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
@@ -217,14 +216,30 @@ public class MainActivity extends BaseActivity
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.email_create_account_button) {
-            createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.email_sign_in_button) {
-            signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.sign_out_button) {
-            signOut();
-        } else if (i == R.id.verify_email_button) {
-            sendEmailVerification();
+        switch (i){
+            case R.id.email_create_account_button:
+                //createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+                Intent intent = new Intent(this, Register.class);
+                //TODO hacer que envie los campos de texto rellenos
+                startActivityForResult(intent, 1);
+                break;
+            case R.id.email_sign_in_button:
+                signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+                break;
+            /*case R.id.verify_email_button:
+                sendEmailVerification();
+                break;*/
+            case R.id.sign_out_button:
+                signOut();
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 2){
+            Toast.makeText(getApplicationContext(), "Todo correcto", Toast.LENGTH_SHORT).show();
         }
     }
 }
