@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/mEmailField"
+                android:id="@+id/mPaypalEmailField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -27,7 +27,7 @@
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/mPasswordField"
+                android:id="@+id/mPaypalPasswordField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -50,7 +50,8 @@
                 android:id="@+id/email_sign_in_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Iniciar Sesión" />
+                android:onClick="registrarse"
+                android:text="Registrarse" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

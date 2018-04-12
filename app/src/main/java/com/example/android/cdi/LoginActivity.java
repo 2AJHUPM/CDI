@@ -23,6 +23,7 @@ public class LoginActivity extends BaseActivity {
 
     private EditText mEmailField;
     private EditText mPasswordField;
+    private TextView mStatusTextView;
 
     private Button iniciarSesion;
 
@@ -38,6 +39,7 @@ public class LoginActivity extends BaseActivity {
         mEmailField = (EditText)findViewById(R.id.mEmailField);
         mPasswordField = (EditText)findViewById(R.id.mPasswordField);
         iniciarSesion = (Button) findViewById(R.id.email_sign_in_button);
+        mStatusTextView = (TextView) findViewById(R.id.mStatusTextView);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -82,6 +84,7 @@ public class LoginActivity extends BaseActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            mStatusTextView.setText("Logged in");
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -93,7 +96,7 @@ public class LoginActivity extends BaseActivity {
 
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
-                            //mStatusTextView.setText(R.string.auth_failed);
+                            mStatusTextView.setText(R.string.auth_failed);
                         }
                         hideProgressDialog();
                         // [END_EXCLUDE]

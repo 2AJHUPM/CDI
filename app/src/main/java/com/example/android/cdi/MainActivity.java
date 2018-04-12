@@ -3,19 +3,8 @@ package com.example.android.cdi;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends BaseActivity
         implements View.OnClickListener {
@@ -34,15 +23,6 @@ public class MainActivity extends BaseActivity
     }
 
     // [START on_start_check_user]
-
-
-
-
-
-
-
-
-
 
     /*private void updateUI(FirebaseUser user) {
         hideProgressDialog();
@@ -72,7 +52,7 @@ public class MainActivity extends BaseActivity
         switch (i){
             case R.id.email_create_account_button:
                 //createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-                Intent intent = new Intent(this, Register.class);
+                Intent intent = new Intent(this, RegisterActivity.class);
                 //TODO definir RequestCodes
                 startActivityForResult(intent, 1);
                 break;
