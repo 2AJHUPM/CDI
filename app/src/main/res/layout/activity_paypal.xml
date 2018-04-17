@@ -51,7 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="registrarse"
-                android:text="Registrarse" />
+                android:text="Registrarse"
+                android:theme="@style/ThemeOverlay.MyDarkButton"/>
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
