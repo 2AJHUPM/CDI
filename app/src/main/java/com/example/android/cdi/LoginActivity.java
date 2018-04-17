@@ -29,6 +29,7 @@ public class LoginActivity extends BaseActivity {
 
     private FirebaseAuth mAuth;
 
+
     private static final String TAG = "EmailPassword";
 
     @Override
@@ -43,6 +44,7 @@ public class LoginActivity extends BaseActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+
     }
 
     @Override
@@ -55,6 +57,8 @@ public class LoginActivity extends BaseActivity {
     // [END on_start_check_user]
 
 
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -62,9 +66,14 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void volver (){
-        Intent intent = new Intent();
-        setResult(2, intent);
+        Intent intent2 = new Intent();
+        setResult(2, intent2);
         finish();
+    }
+
+    public void toApp (){
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivityForResult(intent, 1);
     }
 
     private void signIn(String email, String password) {
@@ -85,6 +94,8 @@ public class LoginActivity extends BaseActivity {
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             mStatusTextView.setText("Logged in");
+                            //TODO definir RequestCodes
+                            toApp();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

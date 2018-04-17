@@ -25,6 +25,7 @@ public class PaypalActivity extends BaseActivity {
     private EditText emailP;
     private EditText contraseñaP;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class PaypalActivity extends BaseActivity {
             emailP.setText(email);
             contraseñaP.setText(contraseña);
         }
+
     }
 
     @Override
@@ -61,8 +63,8 @@ public class PaypalActivity extends BaseActivity {
     // [END on_start_check_user]
 
     public void volver (){
-        Intent intent = new Intent();
-        setResult(2, intent);
+        Intent intent2 = new Intent();
+        setResult(2, intent2);
         finish();
     }
 
@@ -88,6 +90,11 @@ public class PaypalActivity extends BaseActivity {
         return valid;
     }
 
+    public void toApp (){
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivityForResult(intent, 1);
+    }
+
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
 
@@ -103,6 +110,9 @@ public class PaypalActivity extends BaseActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            //TODO definir RequestCodes
+                            toApp();
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
